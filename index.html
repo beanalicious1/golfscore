@@ -1,67 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head onload="getCourses()">
+<head onload="listOfCourses()">
     <meta charset="UTF-8">
     <title>Golf Score Card</title>
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.css">
+    <link type="text/css" rel="stylesheet" href="css/bootstrap-theme.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/bootstrap-theme.css">
-    <link rel="stylesheet" href="css/style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
-    <link type="text/css" href="css/main.css" rel="stylesheet">
+    <!--<script src="js/logic.js"></script>-->
+    <script src="js/map.js"></script>
+
+    <link type="text/css" href="css/style.css" rel="stylesheet">
 
 </head>
 
 <body>
-
-<div class="golfContainer">
-    <div class="row margins">
-        <div class="col-sm-2 col-md-3" id="geoLocation"></div>
-        <div class="col-sm-2 col-md-4">
-            <select id="selectionForCourse" class="form-control" onchange="runCourse(document.getElementById(('selectionForCourses').value))"></select>
+    <div class='container back jumbotron center'>
+        <h1 class="pageTop">Best Golf Project Ever</h1>
+        <div class='col-s-5'>
+            <div id='googleMap'></div>
         </div>
+        <div class='row backimage'>
+            <button class="alert-success" type="button" onclick="nearMe()">Find golf courses near you!</button>
+            <div class='col-s-3 col-md-4'>
+                <select id='courses' class='form-control alert-info' onchange="begin(document.getElementById('courses').value)"></select>
+            </div>
+            <div class='col-s-3 col-md-3'>
+                <select id='total' class='form-control alert-info' onchange="teeList()"></select>
+            </div>
+            <div class='col-s-3 col-md-3'>
+                <select id='teeLoc' class='form-control alert-info' onchange="initialize(document.getElementById('total').value)"></select>
+            </div>
 
-        <div class="col-sm-3 col-md-4">
-            <select id="courseLength" class="form-control" onchange="placeTeeInfo()"></select>
+
         </div>
-
-        <div class="col-sm-3 col-md-3">
-            <select id="teeTime" class="form-control" onchange="playerInitialize(document.getElementById('courseLength'.value)"></select>
+        <div class='row golfstart' id='courseInf'></div>
+        <div class='row golfstart' id='playerInf'>
+            <div class='col-xs-12 alert-info' id='infoBox'>
+                <h3>Enjoy your golfing!.</h3>
+            </div>
         </div>
-
+        <div class='row golfstart' id='courseAdd'></div>
+        <div class='row golfstart' id='entry'></div>
+        <div class='row golfstart' id='addPlayer'></div>
+        <div class='row backimage'>
+            <div class='col-s-3'></div>
+            <div class="row"><h4>be gentle, mr grader</h4></div>
+        </div>
     </div>
-
-    <div class="row course" id="enterCourse"></div>
-    <div class="row course" id="enterPlayer">
-        <div class="col-sm-12 textBox">
-            <h1>Select your course, how many holes, and your difficulty. Above all, enjoy!</h1>
-        </div>
-    </div>
-    <div class="row course" id="courseBox"></div>
-    <div class="row course" id="playerBox"></div>
-    <div class="row course" id="buttonAdd"></div>
-    <div class="row margins">
-        <div class="col-md-6">
-            <div id="googleMap"></div>
-        </div>
-    </div>
-
-
-
-</div>
-
 
 </body>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfC6LzT-QR72KZF9y_cfFjY8Yz6ji9DHs&callback=initMap"></script>
+<script type="text/javascript" src="js/js.js"></script>
 
-<!--Google Map-->
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAGkt2iEpEW9dVjdklVG8mwyhCn3my5uWo&callback=initMap"></script>
-<script type="text/javascript" src="js/ajax.js"></script>
-
-<!-- Jquery -->
-<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-
-<!-- Bootstrap JS -->
-<script src="js/bootstrap.js"></script>
 </html>
